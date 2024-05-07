@@ -7,8 +7,57 @@ import expressAsyncHandler from "express-async-handler";
 const authUser = expressAsyncHandler(async (req, res, next) => {
     res.status(200).json({
         status: "success",
-        message: "Authenticated user."
+        message: "logged in user."
     })
 })
 
-export { authUser }
+// @desc    Signup new user
+// @route   POST /api/users/signup
+// @access  Public
+
+const signupUser = expressAsyncHandler(async (req, res, next) => {
+    res.status(200).json({
+        status: "success",
+        message: "signup"
+    })
+})
+
+// @desc    logout user
+// @route   POST /api/users/logout
+// @access  Public
+
+const logoutUser = expressAsyncHandler(async (req, res, next) => {
+    res.status(200).json({
+        status: "success",
+        message: "logout user"
+    })
+})
+
+// @desc    user profile
+// @route   GET /api/users/profile
+// @access  Private
+
+const getUserProfile = expressAsyncHandler(async (req, res, next) => {
+    res.status(200).json({
+        status: "success",
+        message: "user profile"
+    })
+})
+
+// @desc    Update user profile
+// @route   PUT /api/users/auth
+// @access  Private
+
+const updateUserProfile = expressAsyncHandler(async (req, res, next) => {
+    res.status(200).json({
+        status: "success",
+        message: "update user"
+    })
+})
+
+export { authUser,
+    signupUser, 
+    logoutUser,
+    updateUserProfile,
+    getUserProfile
+ }
