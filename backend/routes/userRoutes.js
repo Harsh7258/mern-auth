@@ -1,5 +1,6 @@
 import express from "express"
 import { authUser, signupUser, logoutUser, getUserProfile, updateUserProfile } from "../controllers/userConrtroller.js"
+import { protect } from "../middlewares/authMiddlewares.js"
 const router = express.Router()
 
 router.post('/auth', authUser, (req, res) => {
@@ -11,7 +12,7 @@ router.post('/', signupUser, (req, res) => {
 router.post('/logout', logoutUser, (req, res) => {
     res.send('logout user')
 })
-router.route('/profile').get(getUserProfile).put(updateUserProfile)
+router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile)
 
 
 export default router;
