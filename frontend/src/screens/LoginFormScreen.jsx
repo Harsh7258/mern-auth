@@ -1,14 +1,36 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
+import { useLoginMutation } from '../slices/userApiSlice'
+import { setCredentials } from '../slices/authSlice';
 
 const LoginFormScreen = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const submitHandler = (e) => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const [login, { isLoading }] = useLoginMutation()
+
+    const { userInfo } = useSelector((state) => state.auth)
+    useEffect(() => {
+      if(userInfo){
+        navigate('/');
+      }
+    },[navigate, userInfo]);
+
+    const submitHandler = async (e) => {
         e.preventDefault();
+        try {
+          const res = await login({ email, password }).unwrap() //Unwraps a mutation call to provide the raw response/error
+          dispatch(setCredentials({ ...res }));
+          navigate('/')
+        } catch (err) {
+          console.log(err?.data?.message || err.error)
+        }
         console.log('submit')
     }
   return (
