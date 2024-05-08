@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 import { useLoginMutation } from '../slices/userApiSlice'
 import { setCredentials } from '../slices/authSlice';
+import { toast } from 'react-toastify';
 
 const LoginFormScreen = () => {
     const [email, setEmail] = useState('')
@@ -29,9 +30,9 @@ const LoginFormScreen = () => {
           dispatch(setCredentials({ ...res }));
           navigate('/')
         } catch (err) {
-          console.log(err?.data?.message || err.error)
+          toast.error(err?.data?.message || err.error)
         }
-        console.log('submit')
+        toast.info('submit')
     }
   return (
     <>
