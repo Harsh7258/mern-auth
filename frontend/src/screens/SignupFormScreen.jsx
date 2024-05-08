@@ -1,7 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSignupMutation } from '../slices/userApiSlice.js';
+import { setCredentials } from '../slices/authSlice.js';
+import { toast } from 'react-toastify';
+import Loader from "../components/Loader.jsx"
 
 const SignupFormScreen = () => {
   const [name, setName] = useState('');
@@ -9,11 +14,35 @@ const SignupFormScreen = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [signup, { isLoading }] = useSignupMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [navigate, userInfo]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log('submit');
+  
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+    } else {
+      try {
+        const res = await signup({ name, email, password }).unwrap();
+        dispatch(setCredentials({ ...res }));
+        navigate('/');
+        toast.dark('Account created.')
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
   };
-
   return (
     <FormContainer>
       <h1>Sign Up</h1>
@@ -56,6 +85,8 @@ const SignupFormScreen = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
+        {isLoading && <Loader/>}
 
         <Button type='submit' variant='primary' className='mt-3'>
           Sign Up

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 import { useLoginMutation } from '../slices/userApiSlice'
 import { setCredentials } from '../slices/authSlice';
+import Loader from '../components/Loader.jsx'
 import { toast } from 'react-toastify';
 
 const LoginFormScreen = () => {
@@ -32,7 +33,6 @@ const LoginFormScreen = () => {
         } catch (err) {
           toast.error(err?.data?.message || err.error)
         }
-        toast.info('submit')
     }
   return (
     <>
@@ -55,6 +55,8 @@ const LoginFormScreen = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}></Form.Control>
             </Form.Group>
+
+            {isLoading && <Loader />}
 
             <Button type='submit' varient='primary' className='mt-3'>Sign In</Button>
 
