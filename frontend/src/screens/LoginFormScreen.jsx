@@ -30,6 +30,7 @@ const LoginFormScreen = () => {
           const res = await login({ email, password }).unwrap() //Unwraps a mutation call to provide the raw response/error
           dispatch(setCredentials({ ...res }));
           navigate('/')
+          toast.dark('Logged in!')
         } catch (err) {
           toast.error(err?.data?.message || err.error)
         }

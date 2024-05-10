@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useUpdateUserMutation } from '../slices/userApiSlice';
-import { setCredentials } from '../slices/authSlice';
+import { useUpdateUserMutation, useDeleteUserMutation } from '../slices/userApiSlice';
+import { logout, setCredentials } from '../slices/authSlice';
 import FormContainer from '../components/FormContainer';
 import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
@@ -16,8 +16,10 @@ const ProfileScreen = () => {
 
     const { userInfo } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const [updateProfile, { isLoading }] = useUpdateUserMutation();
+    const [deleteUser] = useDeleteUserMutation()
 
     useEffect(() => {
         setName(userInfo.name);
@@ -43,6 +45,20 @@ const ProfileScreen = () => {
           }
         }
       };
+
+      const deleteUserHandler = async(e) => {
+        e.preventDefault();
+        try {
+           await deleteUser().unwrap() //Unwraps a mutation call to provide the raw response/error
+           dispatch(logout())
+          navigate('/signup')
+          toast.dark('User deleted')
+          // console.log('delete', res)
+        } catch (err) {
+          console.log(err)
+          toast.error(err?.data?.message || err.error)
+        }
+      }
 
   return (
     <FormContainer>
@@ -89,8 +105,11 @@ const ProfileScreen = () => {
 
         {isLoading && <Loader />}
 
-        <Button type='submit' variant='primary' className='mt-3'>
+        <Button type='submit' variant='primary' className='mt-3 me-4'>
           Update
+        </Button>
+        <Button type='submit' variant='danger' className='mt-3' onClick={deleteUserHandler}>
+          Delete account
         </Button>
       </Form>
     </FormContainer>

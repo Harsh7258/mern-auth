@@ -1,7 +1,28 @@
 import { Container, Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useLogoutMutation } from '../slices/userApiSlice.js'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { logout } from '../slices/authSlice.js';
+import { toast } from 'react-toastify'
 
-const Hero = () => {
+const Hero = ({ isLoggedIn, isLoggedOut }) => {
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const [logoutApiCall] = useLogoutMutation()
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap()
+      dispatch(logout())
+      navigate('/login')
+      toast.warning('Logged out')
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
   return (
     <div className=' py-5'>
       <Container className='d-flex justify-content-center'>
@@ -14,13 +35,18 @@ const Hero = () => {
           </p>
           <div className='d-flex'>
             <LinkContainer to='/login'>
-                <Button variant='primary' className='me-3'>
+                <Button variant='primary' className='me-4' disabled={isLoggedIn}>
                       Sign In
                 </Button>
             </LinkContainer>
-            <LinkContainer to='/signup'>
-                <Button variant='secondary'>
+            <LinkContainer to='/signup' className='me-4'>
+                <Button variant='secondary' disabled={isLoggedIn}>
                      Sign Up
+                </Button>
+            </LinkContainer>
+            <LinkContainer to='/logout'>
+                <Button variant='danger' onClick={logoutHandler} disabled={isLoggedOut} >
+                     Logout
                 </Button>
             </LinkContainer>
           </div>

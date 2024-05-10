@@ -34,7 +34,7 @@ const Header = () => {
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
             <LinkContainer to='/'>
-                <Navbar.Brand>MERN Authnetication system</Navbar.Brand>
+                <Navbar.Brand>MERN-Auth.</Navbar.Brand>
             </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
@@ -43,7 +43,7 @@ const Header = () => {
                 <NavDropdown title={userInfo.name} id='username'>
                   <LinkContainer to='/profile'>
                     <NavDropdown.Item>
-                    <CgProfile /> Profile
+                    <CgProfile /> Account
                     </NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={ logoutHandler }>
