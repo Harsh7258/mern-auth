@@ -117,9 +117,25 @@ const updateUserProfile = expressAsyncHandler(async (req, res, next) => {
     }
 })
 
+// @desc    Delete user
+// @route   POST /api/users/delete
+// @access  Private
+
+const deleteUser = async(req, res) => {
+    const deleteId = req.user._id
+    const user = await User.findByIdAndDelete(deleteId)
+    res.clearCookie('jwt')
+    res.status(200).json({
+        state: "success",
+        user,
+        message: `Deleted user: ${user}`
+    })
+}
+
 export { authUser,
     signupUser, 
     logoutUser,
     updateUserProfile,
-    getUserProfile
+    getUserProfile,
+    deleteUser
  }
