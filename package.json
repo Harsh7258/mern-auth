@@ -8,6 +8,7 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "K. Harsh Naidu",
@@ -20,5 +21,8 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
