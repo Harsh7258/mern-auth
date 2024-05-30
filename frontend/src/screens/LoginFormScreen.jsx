@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +8,7 @@ import { useLoginMutation } from '../slices/userApiSlice'
 import { setCredentials } from '../slices/authSlice';
 import Loader from '../components/Loader.jsx'
 import { toast } from 'react-toastify';
+import { FaGooglePlusSquare } from "react-icons/fa";
 
 const LoginFormScreen = () => {
     const [email, setEmail] = useState('')
@@ -23,6 +25,33 @@ const LoginFormScreen = () => {
         navigate('/');
       }
     },[navigate, userInfo]);
+
+    const googleLogin = useGoogleLogin({
+      onSuccess: async (tokenResponse) => {
+        const URL = import.meta.env.VITE_REACT_APP_GOOGLE_URL
+        const userInfoResponse = await fetch(URL, {
+          headers: {
+            'Authorization': `Bearer ${tokenResponse?.access_token}`,
+          },
+        });
+        const userInfo = await userInfoResponse.json();
+  
+        // Extract the email from the user information
+        // const email = await userInfo.email;
+        const token = tokenResponse?.access_token;
+        // console.log(userInfo)
+  
+        try {
+            // dispatch({ type: 'AUTH', data: { userInfo, token } })
+            dispatch(setCredentials({ userInfo, token }))
+            navigate('/')
+            toast.dark('Logged In with Google!')
+        } catch (error) {
+          console.log(error)
+        }
+      },
+      onError: error => console.log(error)
+    });
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -59,7 +88,10 @@ const LoginFormScreen = () => {
 
             {isLoading && <Loader />}
 
-            <Button type='submit' varient='primary' className='mt-3'>Sign In</Button>
+            <Button type='submit' varient='primary' className='mt-3 me-4'>Sign In</Button>
+            <Button variant='danger' className='mt-3' onClick={() => googleLogin()}>
+              <FaGooglePlusSquare/> Google sign in
+            </Button>
 
             <Row className='py-3'>
                 <Col>

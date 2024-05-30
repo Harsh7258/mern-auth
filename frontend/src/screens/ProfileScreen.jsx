@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useUpdateUserMutation, useDeleteUserMutation } from '../slices/userApiSlice';
@@ -22,9 +22,9 @@ const ProfileScreen = () => {
     const [deleteUser] = useDeleteUserMutation()
 
     useEffect(() => {
-        setName(userInfo.name);
-        setEmail(userInfo.email);
-    }, [userInfo.email, userInfo.name]);
+        setName(userInfo.userInfo?.name || userInfo.name);
+        setEmail(userInfo.userInfo?.email || userInfo.email);
+    }, [userInfo.userInfo?.name, userInfo.userInfo?.email, userInfo.email, userInfo.name]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -105,12 +105,22 @@ const ProfileScreen = () => {
 
         {isLoading && <Loader />}
 
-        <Button type='submit' variant='primary' className='mt-3 me-4'>
-          Update
-        </Button>
-        <Button type='submit' variant='danger' className='mt-3' onClick={deleteUserHandler}>
-          Delete account
-        </Button>
+        {userInfo.userInfo ? <>
+          <Button type='submit' variant='primary' className='mt-3 me-4' disabled>
+              Update
+          </Button>
+          <Button type='submit' variant='danger' className='mt-3' disabled>
+              Delete account
+          </Button>
+        </> : <>
+            <Button type='submit' variant='primary' className='mt-3 me-4'>
+              Update
+            </Button>
+            <Button type='submit' variant='danger' className='mt-3' onClick={deleteUserHandler}>
+              Delete account
+            </Button>
+        </>
+        }
       </Form>
     </FormContainer>
   );

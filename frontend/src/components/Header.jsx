@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown, Image } from 'react-bootstrap';
 import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -12,6 +12,7 @@ import { toast } from "react-toastify"
 const Header = () => {
 
   const { userInfo } = useSelector((state) => state.auth)
+  // console.log(userInfo)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -40,16 +41,30 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               { userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
-                  <LinkContainer to='/profile'>
+                <>
+                   <NavDropdown
+                      title={
+                          <>
+                              <Image
+                                roundedCircle
+                                width="37px"
+                                height="37px"
+                                style={{ marginRight: '10px' }}
+                                src={userInfo.userInfo?.picture || '/user-images.png'}
+                                alt="profile photo"/>
+                              {userInfo.userInfo?.name || userInfo.name}
+                            </>
+                } id="username">
+                  <LinkContainer to="/profile">
                     <NavDropdown.Item>
-                    <CgProfile /> Account
+                      <CgProfile /> Account
                     </NavDropdown.Item>
                   </LinkContainer>
-                  <NavDropdown.Item onClick={ logoutHandler }>
-                  <AiOutlineLogout /> Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      <AiOutlineLogout /> Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
               ) : (
                 <>
                   <LinkContainer to='/login'>
@@ -60,7 +75,6 @@ const Header = () => {
                   </LinkContainer>
                 </>
               ) }
-                
             </Nav>
           </Navbar.Collapse>
         </Container>

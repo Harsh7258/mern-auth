@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSignupMutation } from '../slices/userApiSlice.js';
 import { setCredentials } from '../slices/authSlice.js';
 import { toast } from 'react-toastify';
-import Loader from "../components/Loader.jsx"
+import Loader from "../components/Loader.jsx";
 
 const SignupFormScreen = () => {
   const [name, setName] = useState('');
@@ -88,7 +88,7 @@ const SignupFormScreen = () => {
 
         {isLoading && <Loader/>}
 
-        <Button type='submit' variant='primary' className='mt-3'>
+        <Button type='submit' variant='primary' className='mt-3 me-4'>
           Sign Up
         </Button>
       </Form>
