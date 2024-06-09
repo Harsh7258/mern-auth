@@ -46,19 +46,19 @@
 
 ### Signup Page
 
-![Signup Page](<img width="948" alt="Screenshot 2024-06-09 220315" src="https://github.com/Harsh7258/mern-auth/assets/125180327/1f566b3f-b5ca-456d-b31a-eef5ebccf29b">)
+![Signup Page](/assests/images/signup.png)
 
 ### Signin Page
 
-![Signin Page](<img width="960" alt="Screenshot 2024-06-09 200306" src="https://github.com/Harsh7258/mern-auth/assets/125180327/4f6eb35b-9f65-495d-b15f-546e69cdd395">)
+![Signin Page](/assests/images/signin.png)
 
 ### Update Profile Page
 
-![Account](<img width="947" alt="Screenshot 2024-06-09 200827" src="https://github.com/Harsh7258/mern-auth/assets/125180327/b2849bbe-9081-4736-a8f6-2a29ee3bc68e">)
+![Account](/assests/images/update.png)
 
 ### Dashboard
 
-![Dashboard](<img width="960" alt="Screenshot 2024-06-09 200759" src="https://github.com/Harsh7258/mern-auth/assets/125180327/e3108573-2220-4163-9980-c836cb68eb98">)
+![Dashboard](/assests/images/home.png)
 
 ## Getting Started
 
@@ -85,25 +85,18 @@
 
 ![Project setup and CLI](/assests/images/startCLI.png)
 
-3.  > cd mern-auth
-    >
-    > > npm install
-    > > cd ../frontend
-    > > npm install
-    > > ![Project setup and CLI](<img width="914" alt="Screenshot 2024-06-09 220527" src="https://github.com/Harsh7258/mern-auth/assets/125180327/2856f53b-5e60-4a4b-9d5e-4d67a38f36aa">)
-
-4.  Set up environment variables in .env:
+3.  Set up environment variables in .env:
 
     - MONGO_URI=your_mongodb_uri
     - JWT_SECRET=your_jwt_secret
     - OAUTH_CLIENT_ID=your_oauth_client_id
     - OAUTH_CLIENT_SECRET=your_oauth_client_secret
 
-5.  > Running the Application
+4.  > Running the Application
     >
     > > Start the backend server:
     >
-    > > npm run devStart
+    > > npm run dev
     > > Open your browser and navigate to `http://localhost:3000`.
 
 ### Contributing
