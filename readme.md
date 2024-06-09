@@ -2,19 +2,19 @@
 
 ## Overview
 
-**MERN-auth** is a robust authentication system built using the MERN stack and additional technologies such as **Node.js**, **React.js**, **react-oauth**, **JWT**, **Express.js**, **react-bootstrap**, **cookie authentication**, and **MongoDB**. This project provides a comprehensive solution for user authentication, featuring secure login and registration functionalities, OAuth integration, and token-based authentication.
+**MERN-auth** is a robust authentication system built using the MERN stack and additional technologies such as `Node.js`, `React.js`, `react-oauth`, `JWT`, `Express.js`, `react-bootstrap`, `cookie authentication`, and `MongoDB`. This project provides a comprehensive solution for user authentication, featuring secure login and registration functionalities, OAuth integration, and token-based authentication.
 
 ## Technologies Used
 
-- **Node.js**: Backend runtime environment
-- **React.js**: Frontend library for building user interfaces
-- **react-oauth**: OAuth integration for third-party authentication
-- **JWT (JSON Web Token)**: Token-based authentication
-- **Express.js**: Web application framework for Node.js
-- **react-bootstrap**: UI components built with Bootstrap
-- **Cookie Authentication**: Secure handling of session cookies
-- **MongoDB**: NoSQL database for storing user data
-- **concurrently**: Run multiple commands concurrently. Like npm run watch-js & npm run watch-less but better.
+- `Node.js`: Backend runtime environment
+- `React.js`: Frontend library for building user interfaces
+- `react-oauth`: OAuth integration for third-party authentication
+- `JWT (JSON Web Token)`: Token-based authentication
+- `Express.js`: Web application framework for Node.js
+- `react-bootstrap`: UI components built with Bootstrap
+- `Cookie Authentication`: Secure handling of session cookies
+- `MongoDB`: NoSQL database for storing user data
+- `concurrently`: Run multiple commands concurrently. Like npm run watch-js & npm run watch-less but better.
 
 ## How It Works
 
@@ -44,21 +44,21 @@
 
 ## Screenshots
 
-### Registration Page
+### Signup Page
 
-![Registration Page]("C:\Users\naidu\OneDrive\Pictures\Screenshots\Screenshot 2024-06-09 220315.png")
+![Signup Page](/assests/images/signup.png)
 
-### Login Page
+### Signin Page
 
-![Login Page]("C:\Users\naidu\OneDrive\Pictures\Screenshots\Screenshot 2024-06-09 200306.png")
+![Signin Page](/assests/images/signin.png)
 
 ### Update Profile Page
 
-![Account]("C:\Users\naidu\OneDrive\Pictures\Screenshots\Screenshot 2024-06-09 200827.png")
+![Account](/assests/images/update.png)
 
 ### Dashboard
 
-![Dashboard]("C:\Users\naidu\OneDrive\Pictures\Screenshots\Screenshot 2024-06-09 200759.png")
+![Dashboard](/assests/images/home.png)
 
 ## Getting Started
 
@@ -71,25 +71,33 @@
 
 1. Clone the repository:
 
-   > git clone https://github.com/your-username/mern-auth.git
-   > cd mern-auth
+   git clone https://github.com/Harsh7258/mern-auth.git
 
-2. > cd mern-atuh
-   > npm install
-   > cd ../frontend
-   > npm install
-   > ![Project setup and CLI]("C:\Users\naidu\OneDrive\Pictures\Screenshots\Screenshot 2024-06-09 220527.png")
+   cd mern-auth
+
+2. cd mern-atuh
+
+   npm install
+
+   cd ../frontend
+
+   npm install
+
+   ![Project setup and CLI](/assests/images/startCLI.png)
 
 3. Set up environment variables in .env:
 
-   > MONGO_URI=your_mongodb_uri
-   > JWT_SECRET=your_jwt_secret
-   > OAUTH_CLIENT_ID=your_oauth_client_id
-   > OAUTH_CLIENT_SECRET=your_oauth_client_secret
+   - MONGO_URI=your_mongodb_uri
+   - JWT_SECRET=your_jwt_secret
+   - OAUTH_CLIENT_ID=your_oauth_client_id
+   - OAUTH_CLIENT_SECRET=your_oauth_client_secret
 
 4. Running the Application
+
    Start the backend server:
-   > npm run devStart
+
+   npm run devStart
+
    > Open your browser and navigate to `http://localhost:3000`.
 
 ### Contributing
