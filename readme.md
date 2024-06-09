@@ -46,27 +46,11 @@
 
 ### Signup Page
 
-<<<<<<< HEAD
-![Signup Page](/assests/images/signup.png)
-=======
 ![Signup Page](<img width="948" alt="Screenshot 2024-06-09 220315" src="https://github.com/Harsh7258/mern-auth/assets/125180327/1f566b3f-b5ca-456d-b31a-eef5ebccf29b">)
-
-> > > > > > > b39d77fa0a22bbb15a5bf77061abd9caf5159b39
 
 ### Signin Page
 
-<<<<<<< HEAD
-![Signin Page](/assests/images/signin.png)
-
-### Update Profile Page
-
-![Account](/assests/images/update.png)
-
-### Dashboard
-
-# ![Dashboard](/assests/images/home.png)
-
-![Login Page](<img width="960" alt="Screenshot 2024-06-09 200306" src="https://github.com/Harsh7258/mern-auth/assets/125180327/4f6eb35b-9f65-495d-b15f-546e69cdd395">)
+![Signin Page](<img width="960" alt="Screenshot 2024-06-09 200306" src="https://github.com/Harsh7258/mern-auth/assets/125180327/4f6eb35b-9f65-495d-b15f-546e69cdd395">)
 
 ### Update Profile Page
 
@@ -75,8 +59,6 @@
 ### Dashboard
 
 ![Dashboard](<img width="960" alt="Screenshot 2024-06-09 200759" src="https://github.com/Harsh7258/mern-auth/assets/125180327/e3108573-2220-4163-9980-c836cb68eb98">)
-
-> > > > > > > b39d77fa0a22bbb15a5bf77061abd9caf5159b39
 
 ## Getting Started
 
@@ -89,31 +71,26 @@
 
 1. Clone the repository:
 
-<<<<<<< HEAD
-git clone https://github.com/Harsh7258/mern-auth.git
+- git clone `https://github.com/Harsh7258/mern-auth.git`
 
-cd mern-auth
+- cd mern-auth
 
-2.  cd mern-atuh
+2.  > cd mern-atuh
+    >
+    > > npm install
+    >
+    > > cd ../frontend
+    >
+    > > npm install
 
-    npm install
+![Project setup and CLI](/assests/images/startCLI.png)
 
-    cd ../frontend
-
-    npm install
-
-    # ![Project setup and CLI](/assests/images/startCLI.png)
-
-        git clone
-        cd mern-auth
-
-3.  cd mern-atuh
-    npm install
-    cd ../frontend
-    npm install
-    ![Project setup and CLI](<img width="914" alt="Screenshot 2024-06-09 220527" src="https://github.com/Harsh7258/mern-auth/assets/125180327/2856f53b-5e60-4a4b-9d5e-4d67a38f36aa">)
-
-    > > > > > > > b39d77fa0a22bbb15a5bf77061abd9caf5159b39
+3.  > cd mern-auth
+    >
+    > > npm install
+    > > cd ../frontend
+    > > npm install
+    > > ![Project setup and CLI](<img width="914" alt="Screenshot 2024-06-09 220527" src="https://github.com/Harsh7258/mern-auth/assets/125180327/2856f53b-5e60-4a4b-9d5e-4d67a38f36aa">)
 
 4.  Set up environment variables in .env:
 
@@ -122,18 +99,12 @@ cd mern-auth
     - OAUTH_CLIENT_ID=your_oauth_client_id
     - OAUTH_CLIENT_SECRET=your_oauth_client_secret
 
-5.  Running the Application
-
-    Start the backend server:
-    <<<<<<< HEAD
-
-    npm run devStart
-
-=======
-npm run devStart
-
-> > > > > > > b39d77fa0a22bbb15a5bf77061abd9caf5159b39
-> > > > > > > Open your browser and navigate to `http://localhost:3000`.
+5.  > Running the Application
+    >
+    > > Start the backend server:
+    >
+    > > npm run devStart
+    > > Open your browser and navigate to `http://localhost:3000`.
 
 ### Contributing
 
