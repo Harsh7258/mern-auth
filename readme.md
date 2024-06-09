@@ -75,9 +75,7 @@
 
 - cd mern-auth
 
-2.  > cd mern-atuh
-    >
-    > > npm install
+2.  > > npm install
     >
     > > cd ../frontend
     >
